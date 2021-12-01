@@ -1,9 +1,12 @@
-from nameraceparse import races
 from flask import Flask, Response
 from random import choice
+import csv
 
 app = Flask(__name__)
 
+with open('names.csv', 'r') as csv_file:
+    csv_reader = csv.reader(csv_file)
+    races = next(csv_reader)
 
 @app.route('/getrace', methods=['GET'])
 def getrace():

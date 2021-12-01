@@ -1,0 +1,21 @@
+<html>
+<center><h2>Skyrim Character Generator</h2></center>
+<br>
+<br>
+<br>
+<h2>Past Characters</h2>
+<table>
+    <tr style="color:black; background-color:white">
+        <td>Name</td>
+        <td>Race</td>
+        <td>Archetype</td>
+    </tr>
+    {% for character in characters %}
+        <tr>
+            <td>{{character.name}}</td>
+            <td>{{character.race}}</td>
+            <td>{{character.arche}}</td>
+        </tr>
+    {% endfor %}
+</table>
+</html>
