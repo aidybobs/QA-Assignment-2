@@ -23,17 +23,6 @@ class Character(db.Model):
     archetype = db.Column(db.String(20), nullable=False)
 
 
-arches = {
-    'Two Handed Warrior': ['Heavy Armor', 'Two Handed'],
-    'Battlemage': ['One Handed', 'Any magic tree', 'Enchanting'],
-    'Hunter': ['Archery', 'Light Armor', 'Sneak'],
-    'Warlock': ['Destruction', 'Conjuration', 'Enchanting', 'Light Armor'],
-    'Paladin': ['Shield + One Handed/Two Handed', 'Restoration', 'Heavy Armor', 'Alteration'],
-    'Assassin': ['One Handed(Dagger)', 'Sneak', 'Light Armor', 'Archery'],
-    'Night Blade': ['One Handed(Dagger)', 'Illusion', 'Destruction', 'Sneak']
-}
-
-
 @app.route('/')
 def generate():
     characters = db.Character.query.all()
@@ -42,11 +31,9 @@ def generate():
 
 @app.route('/newchar', methods=['GET'])
 def newchar():
-    name = requests.post('http://name:5000/getname')
-    race = requests.get('http://race:5000/getrace')
-    archeno = requests.get('http://archetype:5000/getarche')
-    arche = list(arches.keys())[archeno]
-    char = Character(name=name, race=race, archetype=arche)
+    character = requests.get('http://character:5000/getchar')
+    character_json = character.json()
+    char = Character(name=character_json['name'], race=character_json['race'], archetype=character_json['arche'])
     db.session.add(char)
     db.session.commit()
     return redirect('/')
