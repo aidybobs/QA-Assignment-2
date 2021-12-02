@@ -4,7 +4,7 @@ import csv
 
 app = Flask(__name__)
 
-with open('names.csv', 'r') as csv_file:
+with open('../names.csv', 'r') as csv_file:
     csv_reader = csv.reader(csv_file)
     races = next(csv_reader)
 

@@ -3,18 +3,21 @@
 <br>
 <br>
 <br>
+<a href="{{ url_for('newchar') }}"> Generate new Character</a>
 <h2>Past Characters</h2>
 <table>
     <tr style="color:black; background-color:white">
+        <td>ID</td>
         <td>Name</td>
         <td>Race</td>
         <td>Archetype</td>
     </tr>
     {% for character in characters %}
         <tr>
+            <td>{{character.char_id}}</td>
             <td>{{character.name}}</td>
             <td>{{character.race}}</td>
-            <td>{{character.arche}}</td>
+            <td>{{character.archetype}}</td>
         </tr>
     {% endfor %}
 </table>
