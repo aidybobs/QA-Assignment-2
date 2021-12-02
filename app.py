@@ -42,7 +42,7 @@ def generate():
 
 @app.route('/newchar', methods=['GET'])
 def newchar():
-    name = requests.get('http://name:5000/getname')
+    name = requests.post('http://name:5000/getname')
     race = requests.get('http://race:5000/getrace')
     archeno = requests.get('http://archetype:5000/getarche')
     arche = list(arches.keys())[archeno]
@@ -50,3 +50,7 @@ def newchar():
     db.session.add(char)
     db.session.commit()
     return redirect('/')
+
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=5000, debug=True)
