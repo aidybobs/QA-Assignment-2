@@ -1,15 +1,15 @@
-from flask import Flask, render_template, redirect
-import requests
+from flask import Flask, render_template, redirect, request
 from os import getenv
+import requests
+from random import choice
 from flask_sqlalchemy import SQLAlchemy
 
 
 app = Flask(__name__)
 
-
-app.config['SQLALCHEMY_DATABASE_URI'] = getenv('databaseuri')
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:root@localhost/skyrim'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['SECRET_KEY'] = getenv('secretkey')
+app.config['SECRET_KEY'] = 'djhsadsa'
 
 
 db = SQLAlchemy(app)
@@ -25,18 +25,20 @@ class Character(db.Model):
 
 @app.route('/')
 def generate():
-    characters = db.Character.query.all()
+    characters = Character.query.all()
     return render_template('home.html', characters=characters)
 
 
 @app.route('/newchar', methods=['GET'])
 def newchar():
-    character = requests.get('http://character:5000/getchar')
-    character_json = character.json()
-    char = Character(name=character_json['name'], race=character_json['race'], archetype=character_json['arche'])
-    db.session.add(char)
-    db.session.commit()
-    return redirect('/')
+    if request.method == 'GET':
+        character = requests.post('http://character:5000/getchar')
+        character_json = character.json()
+        name = choice(character_json['name'])
+        char = Character(name=name, race=character_json['race'], archetype=character_json['arche'])
+        db.session.add(char)
+        db.session.commit()
+        return redirect('/')
 
 
 if __name__ == '__main__':
