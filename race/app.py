@@ -1,12 +1,9 @@
 from flask import Flask, Response
 from random import choice
-import csv
 
 app = Flask(__name__)
 
-with open('../names.csv', 'r') as csv_file:
-    csv_reader = csv.reader(csv_file)
-    races = next(csv_reader)
+races = ['High Elf', 'Argonian', 'Wood Elf', 'Breton', 'Dark Elf', 'Imperial', 'Khajiit', 'Nord', 'Orc', 'Redguard']
 
 @app.route('/getrace', methods=['GET'])
 def getrace():
