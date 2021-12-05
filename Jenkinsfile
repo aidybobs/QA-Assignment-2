@@ -10,7 +10,7 @@ pipeline {
     environment {
         DOCKER_USERNAME = credentials('username')
         DOCKER_PASSWORD = credentials('password')
-        ${secretkey} = credentials('secretkey')
+        secretkey = credentials('secretkey')
 
     }
 
