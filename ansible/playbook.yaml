@@ -1,0 +1,16 @@
+- hosts: jenkins-vm
+  become: true
+  roles: 
+  - docker
+
+- hosts: managers
+  become: true
+  roles:
+  - docker
+  - swarm-manager
+
+- hosts: workers
+  become: true
+  roles:
+  - docker
+  - swarm-worker
