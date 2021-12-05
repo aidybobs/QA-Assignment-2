@@ -1,0 +1,58 @@
+version: "3.8"
+services:
+  nginx:
+    container_name: nginx
+    image: nginx:latest
+    ports:
+      - target: 80
+        published: 80
+    volumes:
+      - type: bind
+        source: ./nginx.conf
+        target: /etc/nginx/nginx.conf
+
+  flask-app:
+    container_name: flask-app
+    image: astark220201/flask-app:latest
+    build: ./flask-app
+    environment:
+      SECRET_KEY: ${secretkey}
+    ports:
+      - target: 5000
+        published: 5000
+    deploy:
+      replicas: 2
+    restart: on-failure
+
+  race:
+    container_name: race
+    image: astark220201/race:latest
+    build: ./race
+    ports:
+      - target: 5001
+        published: 5001
+    deploy:
+      replicas: 2
+    restart: on-failure
+
+  archetype:
+    container_name: archetype
+    image: astark220201/archetype:latest
+    build: ./archetype
+    ports:
+      - target: 5002
+        published: 5002
+    deploy:
+      replicas: 2
+    restart: on-failure
+
+  character:
+    container_name: character
+    image: astark220201/character:latest
+    build: ./character
+    ports:
+      - target: 5003
+        published: 5003
+    deploy:
+      replicas: 2
+    restart: on-failure
