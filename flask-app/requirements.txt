@@ -1,5 +1,4 @@
 flask
 requests
-random
 flask_sqlalchemy
 pandas
