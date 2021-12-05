@@ -8,4 +8,15 @@ I have created a multi-service project that will randomly generate a character y
 Because of the requirements that were set in the design brief I had to structure my app in a specific way. This meant containerising 4 services, running them in a Docker swarm, creating builds using Jenkins-pipeline and managing configuration using Ansible.
 ![NETWORK](images/Network.png)
 
+## CI
+Jira Backlog:<br>
+[Jira](https://astarkqa.atlassian.net/jira/software/projects/A2/boards/3/backlog)
+Jenkins Pipeline:<br>
+![Jenkins]()
 
+##Risk Assessment
+![RS](images/Capture.PNG)
+
+##Testing
+Testing the app required unit testing each function in each service.<br>
+I then automated these tests in the Jenkins pipeline before building the images to make sure that any error isn't pushed to the live application.
