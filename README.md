@@ -6,6 +6,6 @@ I have created a multi-service project that will randomly generate a character y
 
 ## App Design
 Because of the requirements that were set in the design brief I had to structure my app in a specific way. This meant containerising 4 services, running them in a Docker swarm, creating builds using Jenkins-pipeline and managing configuration using Ansible.
-![NETWORK](images/Network.jpg)
+![NETWORK](images/Network.png)
 
 
