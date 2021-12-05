@@ -20,7 +20,7 @@ pipeline {
                 sh 'sudo apt update -y'
                 sh 'sudo apt install python3 python3-pip python3-venv -y'
                 sh 'python3 -m venv venv'
-                sh 'source venv/bin/activate'
+                sh './venv/bin/activate'
                 sh 'pip3 install -r testrequirements.txt'
                 sh 'python3 -m pytest archetype/tests/tests.py --cov'
                 sh 'python3 -m pytest character/tests.py --cov'
