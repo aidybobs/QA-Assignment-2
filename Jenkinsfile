@@ -15,6 +15,12 @@ pipeline {
     }
 
     stages {
+        stage('Test') {
+            steps{
+                sh "bash tests.sh"
+            }
+        }
+
         stage('Build') {
             steps {
                 sh "docker-compose build --parallel"
@@ -23,11 +29,7 @@ pipeline {
             }
         }
 
-        stage('Test') {
-            steps{
-                sh "bash tests.sh"
-            }
-        }
+
 
        stage('Deploy') {
             steps {

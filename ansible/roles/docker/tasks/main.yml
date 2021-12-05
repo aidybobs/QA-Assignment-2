@@ -31,6 +31,11 @@
       - docker-ce-cli
       - containerd.io
 
+- name: "Change User Permissions"
+  shell:
+    cmd: chmod 666 /var/run/docker/sock | sudo bash
+  become: yes
+
 - name: "Add jenkins to docker group"
   user:
     name: jenkins
