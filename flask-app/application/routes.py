@@ -14,7 +14,7 @@ def generate():
 @app.route('/newchar', methods=['GET'])
 def newchar():
     if request.method == 'GET':
-        character = requests.post('http://character:5000/getchar')
+        character = requests.post('http://character:5003/getchar')
         character_json = character.json()
         name = choice(character_json['name'])
         char = Characters(name=name, race=character_json['race'], archetype=character_json['arche'])

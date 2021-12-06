@@ -34,12 +34,12 @@ class TestResponse(TestBase):
 
     def test_new(self):
         with requests_mock.Mocker() as m:
-            m.get('http://character:5000/getchar', json={
+            m.get('http://character:5003/getchar', json={
                 'name': 'John',
                 'race': 'Human',
                 'arche': 'Hunter'
             })
-            assert requests.get('http://character:5000/getchar').json() == {
+            assert requests.get('http://flask-app:5000').json() == {
                 'name': 'John',
                 'race': 'Human',
                 'arche': 'Hunter'

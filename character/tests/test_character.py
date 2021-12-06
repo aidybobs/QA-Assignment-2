@@ -12,7 +12,7 @@ class TestBase(TestCase):
 class TestResponse(TestBase):
     def test_HE_Two_Handed_Warrior(self):
         with requests_mock.Mocker() as m:
-            m.get('http://archetype:5000/getarche', text='0')
-            m.get('http://race:5000/getrace', text='High Elf')
+            m.get('http://archetype:5002/getarche', text='0')
+            m.get('http://race:5001/getrace', text='High Elf')
             response = self.client.get(url_for('getname'))
             self.assertIn(b'["Hyaril","Carene","Meanaami"]', response.data)

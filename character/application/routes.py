@@ -16,8 +16,8 @@ def getname():
         'Assassin': ['One Handed(Dagger)', 'Sneak', 'Light Armor', 'Archery'],
         'Night Blade': ['One Handed(Dagger)', 'Illusion', 'Destruction', 'Sneak']
     }
-    race = requests.get('http://race:5000/getrace')
-    archetype = requests.get('http://archetype:5000/getarche')
+    race = requests.get('http://race:5001/getrace')
+    archetype = requests.get('http://archetype:5002/getarche')
     racenames = data[race.text].tolist()
     archenames = []
     arche = list(arches.keys())[int(archetype.text)]
