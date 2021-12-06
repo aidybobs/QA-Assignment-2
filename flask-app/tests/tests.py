@@ -1,4 +1,4 @@
-import app
+from application import app
 from flask import url_for
 from flask_testing import TestCase
 import requests_mock
@@ -7,12 +7,12 @@ import requests
 
 class TestBase(TestCase):
     def create_app(self):
-        app.app.config.update(
+        app.config.update(
             SQLALCHEMY_DATAVBASE_URI='sqlite:///test.db',
             DEBUG=True,
             SECRET_KEY='sjdahs'
         )
-        return app.app
+        return app
 
 
 class TestResponse(TestBase):
