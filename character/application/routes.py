@@ -1,6 +1,7 @@
 from application import app
 import pandas as pd
 import requests
+from flask import jsonify
 
 
 @app.route('/getname)', methods=['POST'])
