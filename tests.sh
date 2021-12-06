@@ -9,6 +9,6 @@ do
   SOURCE venv/bin/activate
   pip3 install -r testrequirements.txt
   python3 -m pytest --cov=application --cov-report=term-missing
-  deactivate
+  SOURCE deactivate
   cd ..
 done
