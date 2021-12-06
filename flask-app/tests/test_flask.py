@@ -10,7 +10,6 @@ class TestBase(TestCase):
         app.config.update(
             SQLALCHEMY_DATAVBASE_URI='sqlite:///test.db',
             DEBUG=True,
-            SECRET_KEY='sjdahs'
         )
         return app
 
