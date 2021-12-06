@@ -15,4 +15,4 @@ class TestResponse(TestBase):
             m.get('http://archetype:5000/getarche', text='0')
             m.get('http://race:5000/getrace', text='High Elf')
             response = self.client.post(url_for('getname'))
-            self.assertIn(b'["Hyaril","Carene","Meanaami"]', response.data)
+            self.assertIn(b'["Hyaril","Carene","Meanaami"]', response.json)
