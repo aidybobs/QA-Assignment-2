@@ -15,14 +15,9 @@ services:
     container_name: flask-app
     image: astark220201/flask-app:latest
     build: ./flask-app
-    environment:
-      SECRET_KEY: ${secretkey}
     ports:
       - target: 5000
         published: 5000
-    deploy:
-      replicas: 2
-    restart: on-failure
 
   race:
     container_name: race
@@ -33,7 +28,6 @@ services:
         published: 5001
     deploy:
       replicas: 2
-    restart: on-failure
 
   archetype:
     container_name: archetype
@@ -44,7 +38,6 @@ services:
         published: 5002
     deploy:
       replicas: 2
-    restart: on-failure
 
   character:
     container_name: character
@@ -55,4 +48,3 @@ services:
         published: 5003
     deploy:
       replicas: 2
-    restart: on-failure
