@@ -1,5 +1,5 @@
 from application import app, db
-from application.models import Character
+from application.models import Characters
 from flask import url_for
 from flask_testing import TestCase
 import requests_mock
@@ -16,7 +16,7 @@ class TestBase(TestCase):
 
     def setUp(self):
         db.create_all()
-        sampleemp = Character(name='James', race='Human', archetype='Warrior')
+        sampleemp = Characters(name='James', race='Human', archetype='Warrior')
         db.session.add(sampleemp)
         db.session.commit()
 

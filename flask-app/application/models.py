@@ -1,7 +1,7 @@
 from application import db
 
 
-class Character(db.Model):
+class Characters(db.Model):
     __tablename__ = 'Characters'
     char_id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(20), nullable=False)
