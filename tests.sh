@@ -8,7 +8,7 @@ do
   python3 -m venv venv
   . venv/bin/activate
   pip3 install -r testrequirements.txt
-  python3 -m pytest tests/tests.py --cov=application --cov-report=term
+  python3 -m pytest --cov=application --cov-report=term
   deactivate
   cd ..
 done
