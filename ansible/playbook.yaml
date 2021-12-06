@@ -1,4 +1,4 @@
-- hosts: jenkins-vm
+- hosts: jenkinsvm
   become: true
   roles: 
   - docker
