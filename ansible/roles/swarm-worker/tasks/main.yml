@@ -4,6 +4,6 @@
 - name: "Add Worker to Swarm"
   docker_swarm:
     state: join
-    advertise_addr: swarm-worker
+    advertise_addr: dockerworker
     join_token: "{{ hostvars['dockermanager']['info']['swarm_facts']['JoinTokens']['Worker'] }}"
     remote_addrs: [ 'dockermanager:2377' ]
