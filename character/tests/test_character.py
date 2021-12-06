@@ -6,7 +6,7 @@ from application import app
 
 class TestBase(TestCase):
     def create_app(self):
-        return app.app
+        return app
 
 
 class TestResponse(TestBase):
