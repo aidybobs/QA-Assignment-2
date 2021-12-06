@@ -28,7 +28,7 @@ class TestBase(TestCase):
 class TestResponse(TestBase):
     def test_home(self):
         response = self.client.get(url_for('generate'))
-        self.assertEquals(response.status_code, 200)
+        self.assertEqual(response.status_code, 200)
         self.assertIn(b'James', response.data)
         self.assertIn(b'Human', response.data)
 
