@@ -4,7 +4,7 @@ import requests
 from flask import jsonify
 
 
-@app.route('/getname)', methods=['GET'])
+@app.route('/getname)', methods=['POST'])
 def getname():
     data = pd.read_csv('resources/names.csv')
     arches = {

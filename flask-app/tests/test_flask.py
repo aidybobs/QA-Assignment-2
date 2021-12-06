@@ -34,13 +34,10 @@ class TestResponse(TestBase):
 
     def test_new(self):
         with requests_mock.Mocker() as m:
-            m.get('http://character:5003/getchar', json={
-                'name': 'John',
-                'race': 'Human',
-                'arche': 'Hunter'
+            m.post('http://character:5003/getchar', json={
+                'name': 'Chris',
+                'race': 'Orc',
+                'arche': 'Mage'
             })
-            assert requests.get('http://flask-app:5000').json() == {
-                'name': 'John',
-                'race': 'Human',
-                'arche': 'Hunter'
-            }
+            response = self.client.get(url_for('newchar'), follow_redirects=True)
+            self.assertIn(b'Mage', response.data)

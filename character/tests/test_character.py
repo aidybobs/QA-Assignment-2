@@ -14,5 +14,5 @@ class TestResponse(TestBase):
         with requests_mock.Mocker() as m:
             m.get('http://archetype:5002/getarche', text='0')
             m.get('http://race:5001/getrace', text='High Elf')
-            response = self.client.get(url_for('getname'))
+            response = self.client.post(url_for('getname'))
             self.assertIn(b'["Hyaril","Carene","Meanaami"]', response.data)
